@@ -1,0 +1,16 @@
+services:
+  software-arch-patterns:
+    build:
+        context: .
+        dockerfile: Dockerfile
+    container_name: software-arch-patterns
+    #environment:
+    #  - SPRING_PROFILES_ACTIVE=test
+    ports:
+      - "9500:9500"
+    restart: unless-stopped
+    networks:
+      - public
+
+networks:
+  public:
