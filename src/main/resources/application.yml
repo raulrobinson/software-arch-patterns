@@ -1,0 +1,71 @@
+# Server Configuration
+spring:
+  application:
+    name: @project.name@
+  # Database Configuration
+  sql:
+    init:
+      platform: h2
+  datasource:
+    url: jdbc:h2:mem:testdb
+    username: sa
+    password:
+    hikari:
+      maximum-pool-size: 10
+      minimum-idle: 1
+  jpa:
+    show-sql: false
+    open-in-view: false
+    hibernate:
+      ddl-auto: update
+  h2:
+    console:
+      enabled: true
+
+# Context Path Configuration
+controller:
+  properties:
+    base-path: /api/v1
+
+# Swagger Configuration
+springdoc:
+  api-docs:
+    path: /v3/api-docs
+  swagger-ui:
+    use-root-path: true
+
+# OpenAPI Definition
+openapi:
+  service:
+    host: http://localhost:${server.port}
+    title: @project.name@
+    version: @project.version@
+    description: @project.description@
+    contact:
+      name: Raul Bolivar Navas
+      email: rasysbox@hotmail.com
+
+# Logging & Metrics Configuration
+logging:
+  level:
+    org.hibernate: warn
+info:
+  project-version: @project.version@
+  build-timestamp: ${maven.build.timestamp}
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  endpoint:
+    health:
+      status:
+        http-mapping:
+          down: 500
+      show-details: always
+  http exchanges:
+    recording:
+      include: request-headers,time-taken,session-id
+
+server:
+  port: 9500
