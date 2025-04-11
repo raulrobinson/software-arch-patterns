@@ -1,9 +1,13 @@
 services:
-  software-arch-patterns:
+
+  # ------------------------------------
+  # -- Software Architecture Patterns --
+  # ------------------------------------
+  pattern:
     build:
-        context: .
+        context: ./pattern
         dockerfile: Dockerfile
-    container_name: software-arch-patterns
+    container_name: pattern
     #environment:
     #  - SPRING_PROFILES_ACTIVE=test
     ports:
