@@ -10,7 +10,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("${controller.properties.base-path}/repository")
-@Tag(name = "Repository Pattern", description = "User repository operations")
+@Tag(name = "Repository Pattern", description = "El Repository Pattern actúa como una capa de abstracción entre la lógica de negocios y el acceso a datos. Permite que las operaciones de persistencia se hagan sin exponer los detalles de la base de datos.")
 public class UserController {
 
     private final UserService userService;

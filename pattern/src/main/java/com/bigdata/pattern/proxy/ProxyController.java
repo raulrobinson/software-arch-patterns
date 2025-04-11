@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("${controller.properties.base-path}/proxy")
-@Tag(name = "Proxy", description = "Proxy operations")
+@Tag(name = "Proxy", description = "El patrón Proxy proporciona un objeto sustituto o representante de otro objeto para controlar el acceso al original")
 public class ProxyController {
 
     private final ReportServiceProxy proxy;
