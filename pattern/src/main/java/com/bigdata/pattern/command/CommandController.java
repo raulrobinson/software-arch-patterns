@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("${controller.properties.base-path}/command")
-@Tag(name = "Command", description = "Command operations")
+@Tag(name = "Command", description = "Command es un patrón de comportamiento que se usa para desacoplar al emisor de un comando del receptor, encapsulando una solicitud como un objeto")
 public class CommandController {
 
     private final ReceiverLight receiverLight = new ReceiverLight();

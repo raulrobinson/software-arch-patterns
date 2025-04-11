@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("${controller.properties.base-path}/adapter")
-@Tag(name = "Adapter", description = "Adapter operations")
+@Tag(name = "Adapter", description = "El Patrón Adapter permite que dos clases con interfaces incompatibles trabajen juntas.")
 public class AdapterController {
 
     private final PaymentProcessor processor;

@@ -9,3 +9,11 @@ El patrón Proxy proporciona un objeto sustituto o representante de otro objeto 
 🧪 Ejemplo: 
 
 Servicio que accede a datos externos, pero lo controlamos con un Proxy para evitar múltiples llamadas innecesarias (simulando cache/log).
+
+### Author
+
+Raul Bolivar Navas | https://linkedin.com/in/rasysbox | rasysbox@hotmail.com
+
+### License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.

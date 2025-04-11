@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("${controller.properties.base-path}/decorator")
-@Tag(name = "Decorator", description = "Decorator pattern operations")
+@Tag(name = "Decorator", description = "Este patrón permite agregar funcionalidad a un objeto en tiempo de ejecución sin alterar su estructura base.")
 public class DecoratorController {
 
     private final Notifier notifier;
