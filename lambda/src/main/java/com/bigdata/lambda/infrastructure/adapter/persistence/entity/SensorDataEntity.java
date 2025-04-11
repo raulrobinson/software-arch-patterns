@@ -1,9 +1,11 @@
 package com.bigdata.lambda.infrastructure.adapter.persistence.entity;
 
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
 
-import java.time.LocalDateTime;
-
+@Getter
+@Setter
 @Entity
 @Table(name = "sensor_data")
 public class SensorDataEntity {
@@ -12,19 +14,14 @@ public class SensorDataEntity {
     private Long id;
 
     private String sensorId;
-    private LocalDateTime timestamp;
+    private String timestamp;
     private Double sensorValue;
 
     public SensorDataEntity() {}
 
-    public SensorDataEntity(String sensorId, LocalDateTime timestamp, Double sensorValue) {
+    public SensorDataEntity(String sensorId, String timestamp, Double sensorValue) {
         this.sensorId = sensorId;
         this.timestamp = timestamp;
         this.sensorValue = sensorValue;
     }
-
-    public Long getId() { return id; }
-    public String getSensorId() { return sensorId; }
-    public LocalDateTime getTimestamp() { return timestamp; }
-    public Double getValue() { return sensorValue; }
 }

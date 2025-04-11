@@ -1,4 +1,4 @@
-package com.bigdata.lambda.domain.repository;
+package com.bigdata.lambda.domain.port;
 
 import com.bigdata.lambda.domain.model.SensorData;
 

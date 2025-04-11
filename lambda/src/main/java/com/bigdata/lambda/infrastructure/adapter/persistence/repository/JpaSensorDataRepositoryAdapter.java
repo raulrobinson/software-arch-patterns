@@ -1,7 +1,7 @@
 package com.bigdata.lambda.infrastructure.adapter.persistence.repository;
 
 import com.bigdata.lambda.domain.model.SensorData;
-import com.bigdata.lambda.domain.repository.SensorDataRepository;
+import com.bigdata.lambda.domain.port.SensorDataRepository;
 import com.bigdata.lambda.infrastructure.adapter.persistence.entity.SensorDataEntity;
 import org.springframework.stereotype.Component;
 
@@ -30,7 +30,7 @@ public class JpaSensorDataRepositoryAdapter implements SensorDataRepository {
     @Override
     public List<SensorData> findAll() {
         return jpaRepository.findAll().stream().map(e ->
-                new SensorData(e.getId(), e.getSensorId(), e.getTimestamp(), e.getValue())
+                new SensorData(e.getId(), e.getSensorId(), e.getTimestamp().toString(), e.getSensorValue())
         ).collect(Collectors.toList());
     }
 }

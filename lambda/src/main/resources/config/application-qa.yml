@@ -1,6 +1,24 @@
 server:
-  port: 8080
+  port: 9501
 
 spring:
+
+  # Database Configuration
+  datasource:
+    url: jdbc:postgresql://localhost:5432/patterns
+    username: admin
+    password: admin
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+
+  # Kafka Configuration
   kafka:
-    bootstrap-servers: kafka:29092
+    bootstrap-servers: localhost:9092
+    #bootstrap-servers: kafka:29092
+
+kafka:
+  topic:
+    name: sensor-data
