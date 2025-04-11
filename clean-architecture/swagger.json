@@ -1,0 +1,105 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "clean-architecture",
+    "description": "clean-architecture",
+    "termsOfService": "https://opensource.org/licenses/MIT",
+    "contact": {
+      "name": "Raul Bolivar Navas",
+      "email": "rasysbox@hotmail.com"
+    },
+    "license": {
+      "name": "MIT License",
+      "url": "https://opensource.org/licenses/MIT"
+    },
+    "version": "0.0.1-SNAPSHOT"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:9502",
+      "description": "clean-architecture"
+    }
+  ],
+  "tags": [
+    {
+      "name": "Data Controller",
+      "description": "Controller for managing sensor data"
+    }
+  ],
+  "paths": {
+    "/api/v1/clean-architecture/ingest": {
+      "post": {
+        "tags": [
+          "Data Controller"
+        ],
+        "summary": "Ingest sensor data",
+        "description": "Ingests sensor data into the system",
+        "operationId": "ingestData",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SensorDataDTO"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/clean-architecture/data": {
+      "get": {
+        "tags": [
+          "Data Controller"
+        ],
+        "summary": "Get all sensor data",
+        "description": "Retrieves all sensor data from the system",
+        "operationId": "getAllData",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "SensorDataDTO": {
+        "type": "object",
+        "properties": {
+          "sensorId": {
+            "type": "string",
+            "description": "Sensor ID",
+            "example": "sensor123"
+          },
+          "value": {
+            "type": "number",
+            "description": "Sensor value",
+            "format": "double",
+            "example": 23.5
+          }
+        }
+      }
+    }
+  }
+}
