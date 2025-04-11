@@ -9,10 +9,10 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.bigdata</groupId>
-    <artifactId>lambda</artifactId>
+    <artifactId>clean-architecture</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>lambda</name>
-    <description>lambda</description>
+    <name>clean-architecture</name>
+    <description>clean-architecture</description>
     <url>https://github.com/raulrobinson/software-arch-patterns</url>
     <licenses>
         <license>
@@ -82,18 +82,6 @@
             <scope>runtime</scope>
         </dependency>
 
-        <!-- Kafka -->
-        <dependency>
-            <groupId>org.springframework.kafka</groupId>
-            <artifactId>spring-kafka</artifactId>
-        </dependency>
-
-        <!-- JSON (para deserializer objetos en Kafka) -->
-        <dependency>
-            <groupId>com.fasterxml.jackson.core</groupId>
-            <artifactId>jackson-databind</artifactId>
-        </dependency>
-
         <dependency>
             <groupId>com.google.code.gson</groupId>
             <artifactId>gson</artifactId>
@@ -111,14 +99,6 @@
             <groupId>org.springdoc</groupId>
             <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
             <version>2.7.0</version>
-        </dependency>
-
-        <!-- Lombok -->
-        <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
-            <version>1.18.22</version>
-            <scope>provided</scope>
         </dependency>
 
         <!-- Metrics & Observabilities -->
@@ -175,13 +155,6 @@
                     <source>${java.version}</source>
                     <target>${java.version}</target>
                     <encoding>UTF-8</encoding>
-                    <annotationProcessorPaths>
-                        <path>
-                            <groupId>org.projectlombok</groupId>
-                            <artifactId>lombok</artifactId>
-                            <version>1.18.22</version>
-                        </path>
-                    </annotationProcessorPaths>
                 </configuration>
             </plugin>
             <plugin>

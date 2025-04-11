@@ -1,18 +1,3 @@
-# Server Configuration
-spring:
-  application:
-    name: @project.name@
-
-  # Kafka Configuration
-  kafka:
-    consumer:
-      group-id: lambda-group
-      auto-offset-reset: earliest
-      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
-      value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
-      properties:
-        spring.json.trusted.packages: "*"
-
 # Context Path Configuration
 controller:
   properties:
