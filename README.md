@@ -3,6 +3,8 @@
 Software architectural patterns are general reusable solutions to commonly occurring problems in software architecture within a given context. 
 They are not finished designs but templates that can be applied to solve a particular problem in a specific context. 
 
+Based in the Concept of Clean Architecture, the software architectural patterns are a set of best practices and guidelines that help developers design and structure their software systems in a way that is maintainable, scalable, and adaptable to change.
+
 Here are some **(56)** most common software architectural patterns:
 
 1. **Singleton Pattern**: This pattern restricts the instantiation of a class to one single instance. It is used when exactly one object is needed to coordinate actions across the system.
