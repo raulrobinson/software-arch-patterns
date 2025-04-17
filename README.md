@@ -3,6 +3,34 @@
 Software architectural patterns are general reusable solutions to commonly occurring problems in software architecture within a given context. 
 They are not finished designs but templates that can be applied to solve a particular problem in a specific context. 
 
+### Principio SOLID
+
+Los principios SOLID son cinco principios fundamentales de diseño de software orientado a objetos que ayudan a que el código sea más mantenible, extensible y comprensible.
+
+Estos principios son:
+
+🧱 1. S - Single Responsibility Principle (SRP)
+
+    "Una clase debe tener una única razón para cambiar"
+
+    Una clase debe hacer una sola cosa.
+
+🧱 2. O - Open/Closed Principle (OCP)
+
+    "Las clases deben estar abiertas para extensión, pero cerradas para modificación"
+
+🧱 3. L - Liskov Substitution Principle (LSP)
+
+    "Las clases hijas deben poder sustituir a sus clases padre sin alterar el comportamiento"
+
+🧱 4. I - Interface Segregation Principle (ISP)
+
+    "Los clientes no deben depender de interfaces que no utilizan"
+
+🧱 5. D - Dependency Inversion Principle (DIP)
+
+    "Depende de abstracciones, no de concreciones"
+
 Based in the Concept of Clean Architecture, the software architectural patterns are a set of best practices and guidelines that help developers design and structure their software systems in a way that is maintainable, scalable, and adaptable to change.
 
 Here are some **(56)** most common software architectural patterns:
