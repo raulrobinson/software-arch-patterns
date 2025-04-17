@@ -3,11 +3,11 @@
 Software architectural patterns are general reusable solutions to commonly occurring problems in software architecture within a given context. 
 They are not finished designs but templates that can be applied to solve a particular problem in a specific context. 
 
-### Principio SOLID
+### SOLID principles
 
-Los principios SOLID son cinco principios fundamentales de diseño de software orientado a objetos que ayudan a que el código sea más mantenible, extensible y comprensible.
+The SOLID principles are five fundamental principles of object-oriented software design that help make code more maintainable, extensible, and understandable.
 
-Estos principios son:
+These principles are:
 
 🧱 1. S - Single Responsibility Principle (SRP)
 
