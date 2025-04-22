@@ -5,15 +5,15 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>3.4.4</version>
-        <relativePath/> <!-- lookup parent from repository -->
+        <version>3.3.8</version>
+        <relativePath/> <!-- lookup parent from a repository -->
     </parent>
-    <groupId>com.bigdata</groupId>
-    <artifactId>clean-architecture</artifactId>
+    <groupId>com.reactive</groupId>
+    <artifactId>users-webflux</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>clean-architecture</name>
-    <description>clean-architecture</description>
-    <url>https://github.com/raulrobinson/software-arch-patterns</url>
+    <name>users-webflux</name>
+    <description>users-webflux</description>
+    <url>https://github.com/raulrobinson</url>
     <licenses>
         <license>
             <name>Apache License, Version 2.0</name>
@@ -38,31 +38,18 @@
         <java.version>17</java.version>
         <maven.compiler.source>${java.version}</maven.compiler.source>
         <maven.compiler.target>${java.version}</maven.compiler.target>
-        <start-class>com.bigdata.lambda.LambdaApplication</start-class>
-        <sonar.java.coveragePlugin>jacoco</sonar.java.coveragePlugin>
-        <sonar.dynamicAnalysis>reuseReports</sonar.dynamicAnalysis>
-        <sonar.jacoco.reportPath>project.basedir/../target/jacoco.exec</sonar.jacoco.reportPath>
-        <sonar.language>java</sonar.language>
-        <sonar.exclusions>
-            src/main/java/com/bigdata/lambda/LambdaApplication.java
-        </sonar.exclusions>
-        <sonar.coverage.exclusions>
-            src/main/java/com/bigdata/lambda/application/**/*,
-            src/main/java/com/bigdata/lambda/domain/**/*,
-            src/main/java/com/bigdata/lambda/infrastructure/**/*
-        </sonar.coverage.exclusions>
-        <docker.image.prefix>opt</docker.image.prefix>
     </properties>
     <dependencies>
+        <!-- Spring Boot WebFlux Dependency -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter</artifactId>
+            <artifactId>spring-boot-starter-webflux</artifactId>
         </dependency>
 
-        <!-- Spring Web -->
+        <!-- Spring Data R2DBC for reactive database access -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
+            <artifactId>spring-boot-starter-data-r2dbc</artifactId>
         </dependency>
 
         <!-- Spring Validation -->
@@ -71,15 +58,16 @@
             <artifactId>spring-boot-starter-validation</artifactId>
         </dependency>
 
-        <!-- Spring Data JPA, Postgres & Database embedded -->
+        <!-- Spring Boot Security -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-data-jpa</artifactId>
+            <artifactId>spring-boot-starter-security</artifactId>
         </dependency>
+
+        <!-- PostgreSQL H2 embedded -->
         <dependency>
-            <groupId>org.postgresql</groupId>
-            <artifactId>postgresql</artifactId>
-            <scope>runtime</scope>
+            <groupId>io.r2dbc</groupId>
+            <artifactId>r2dbc-h2</artifactId>
         </dependency>
         <dependency>
             <groupId>com.h2database</groupId>
@@ -87,23 +75,25 @@
             <scope>runtime</scope>
         </dependency>
 
-        <dependency>
-            <groupId>com.google.code.gson</groupId>
-            <artifactId>gson</artifactId>
-            <version>2.10.1</version>
-        </dependency>
-
-        <!-- Scheduler -->
-<!--        <dependency>-->
-<!--            <groupId>org.springframework.boot</groupId>-->
-<!--            <artifactId>spring-boot-starter-quartz</artifactId>-->
-<!--        </dependency>-->
-
-        <!-- Springdoc OpenAPI -->
+        <!-- Spring Boot OpenAPI for Documentation -->
         <dependency>
             <groupId>org.springdoc</groupId>
-            <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
-            <version>2.7.0</version>
+            <artifactId>springdoc-openapi-starter-webflux-ui</artifactId>
+            <version>2.6.0</version>
+        </dependency>
+
+        <!-- Reactor Test Dependency for Unit Testing -->
+        <dependency>
+            <groupId>io.projectreactor</groupId>
+            <artifactId>reactor-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+
+        <!-- Lombok (optional for getter/setter generation) -->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <scope>provided</scope>
         </dependency>
 
         <!-- Metrics & Observabilities -->
@@ -117,9 +107,10 @@
             <scope>runtime</scope>
         </dependency>
 
+        <!-- Spring Boot Test Dependency -->
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-test</artifactId>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-test</artifactId>
             <scope>test</scope>
         </dependency>
     </dependencies>
@@ -147,7 +138,7 @@
                         <resource>
                             <targetPath>/</targetPath>
                             <directory>project.build.directory</directory>
-                            <include>template-telefonica.jar</include>
+                            <include>template.jar</include>
                         </resource>
                     </resources>
                 </configuration>
@@ -256,52 +247,7 @@
                     <testFailureIgnore>true</testFailureIgnore>
                 </configuration>
             </plugin>
-            <plugin>
-                <groupId>org.jacoco</groupId>
-                <artifactId>jacoco-maven-plugin</artifactId>
-                <version>0.8.8</version>
-                <executions>
-                    <execution>
-                        <id>jacoco-initialize</id>
-                        <goals>
-                            <goal>prepare-agent</goal>
-                        </goals>
-                        <phase>test-compile</phase>
-                    </execution>
-                    <execution>
-                        <id>jacoco-site</id>
-                        <phase>test</phase>
-                        <goals>
-                            <goal>report</goal>
-                        </goals>
-                    </execution>
-                    <execution>
-                        <id>report</id>
-                        <phase>prepare-package</phase>
-                        <goals>
-                            <goal>report</goal>
-                        </goals>
-                    </execution>
-                </executions>
-                <configuration>
-                    <excludes>
-                        **/lambda/application/**/*,
-                        **/lambda/domain/**/*,
-                        **/lambda/infrastructure/**/*
-                        <exclude>/com/bigdata/lambda/LambdaApplication.java</exclude>
-                    </excludes>
-                </configuration>
-            </plugin>
         </plugins>
-        <pluginManagement>
-            <plugins>
-                <plugin>
-                    <groupId>org.sonarsource.scanner.maven</groupId>
-                    <artifactId>sonar-maven-plugin</artifactId>
-                    <version>3.7.0.1746</version>
-                </plugin>
-            </plugins>
-        </pluginManagement>
     </build>
 
     <profiles>

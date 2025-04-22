@@ -1,0 +1,29 @@
+# Server Configuration
+server:
+  port: 9502
+
+spring:
+  # Database Configuration
+  r2dbc:
+    url: r2dbc:h2:mem:///lambda;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
+    username: sa
+    password:
+  sql:
+    init:
+      #platform: h2
+      mode: always
+  jpa:
+    show-sql: true
+    open-in-view: true
+    hibernate:
+      ddl-auto: update
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
+
+springdoc:
+  api-docs:
+    path: /v3/api-docs
+  swagger-ui:
+    path: /swagger-ui.html
